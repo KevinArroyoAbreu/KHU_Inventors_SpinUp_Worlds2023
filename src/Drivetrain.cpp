@@ -10,29 +10,28 @@
 //Chassis Controller builders for Pure Pursuit Controllers
 /*-----------------------------------------------------------------*/
 //Chassis Controller
-std::shared_ptr<ChassisController> pcDrive =
+std::shared_ptr<OdomChassisController> pcDrive =
 ChassisControllerBuilder()
   .withMotors({11,-12},{-13,14} )
-  // Blue gearset, 2.75" inch wheel diameter,  inch wheel track; 36/60 transmission
-  .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 11_in}, imev5BlueTPR})
-  .withSensors( IntegratedEncoder{ 11 }, IntegratedEncoder{ 13, true } )
+  // Blue gearset, 3.25" inch wheel diameter, 10 inch wheel track; 36/60 transmission
+  .withDimensions({AbstractMotor::gearset::blue, (60 / 36)}, {{3.25_in, 10_in}, imev5BlueTPR})
   /*.withGains(
     {dkP, dkI, dkD}, // distance controller gains
     {tkP, tkI, tkD}, // turn controller gains
     {akP, akI, akD}
   )*/
-  .withMaxVelocity(300)
+  //.withMaxVelocity(300)
   .withOdometry(StateMode::CARTESIAN)
-  .build();
+  .buildOdometry();
 
 
 //Async Motion Profile Controller
 std::shared_ptr<AsyncMotionProfileController> profileController =
   AsyncMotionProfileControllerBuilder()
       .withLimits({
-        1.0, // Maximum linear velocity of the Chassis in m/s
-        2.0, // Maximum linear acceleration of the Chassis in m/s/s
-        10.0 // Maximum linear jerk of the Chassis in m/s/s/s
+        1.56, // Maximum linear velocity of the Chassis in m/s
+        3.41, // Maximum linear acceleration of the Chassis in m/s/s
+        6.82 // Maximum linear jerk of the Chassis in m/s/s/s (2x accel.) [adjust for aggressive/smooth turns]
       })
       .withOutput(pcDrive)
       .buildMotionProfileController();
@@ -44,8 +43,8 @@ std::shared_ptr<AsyncMotionProfileController> profileController =
 std::shared_ptr<ChassisController> turn =
 ChassisControllerBuilder()
   .withMotors({11,-12},{-13,14} )
-  // Blue gearset, 2.75" inch wheel diameter,  11 inch wheel track; 36/60 transmission
-  .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 11_in}, imev5BlueTPR})
+  // Blue gearset, 3.25" inch wheel diameter, 10 inch wheel track; 36/60 transmission
+  .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 10_in}, imev5BlueTPR})
   //.withGains(
   //  {dkP, dkI, dkD}, // distance controller gains
   //  {tkP, tkI, tkD}, // turn controller gains
@@ -58,8 +57,8 @@ ChassisControllerBuilder()
   std::shared_ptr<ChassisController> skills =
   ChassisControllerBuilder()
     .withMotors({11,-12},{-13,14} )
-    // Blue gearset, 2.75" inch wheel diameter,  11 inch wheel track; 36/60 transmission
-    .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 11_in}, imev5BlueTPR})
+    // Blue gearset, 3.25" inch wheel diameter, 10 inch wheel track; 36/60 transmission
+    .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 10_in}, imev5BlueTPR})
   /*  .withGains(
       {dkP, dkI, dkD}, // distance controller gains
       {tkP, tkI, tkD}, // turn controller gains
@@ -73,8 +72,8 @@ ChassisControllerBuilder()
   std::shared_ptr<ChassisController> drive =
   ChassisControllerBuilder()
     .withMotors({11,-12},{-13,14} )
-    // Blue gearset, 2.75" inch wheel diameter,  11 inch wheel track; 36/60 transmission
-    .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 11_in}, imev5BlueTPR})
+    // Blue gearset, 3.25" inch wheel diameter, 10 inch wheel track; 36/60 transmission
+    .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 10_in}, imev5BlueTPR})
   /*  .withGains(
       {dkP, dkI, dkD}, // distance controller gains
       {tkP, tkI, tkD}, // turn controller gains

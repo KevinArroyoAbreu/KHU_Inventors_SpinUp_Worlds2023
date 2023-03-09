@@ -13,7 +13,7 @@
 //Chassis Controller builders for Pure Pursuit Controllers
 /*-----------------------------------------------------------------*/
 //Chassis Controller
-extern std::shared_ptr<ChassisController> pcDrive;
+extern std::shared_ptr<OdomChassisController> pcDrive;
 //Async Motion Profile Controller
 extern std::shared_ptr<AsyncMotionProfileController> profileController;
 

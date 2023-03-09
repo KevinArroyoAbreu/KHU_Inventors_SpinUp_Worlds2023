@@ -21,13 +21,14 @@ and programming skills*/
 void pathFollowing(){
   profileController->generatePath({
       {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
-      {36_in, 12_in, 45_deg},
-      {50_in, 36_in, 90_deg},
-     }, // The next point in the profile, 3 feet forward, and 3 to the right
+      {2_ft, 0_ft, 0_deg},
+     },
       "A" // Profile name
     );
     profileController->setTarget("A");
     profileController->waitUntilSettled();
+
+
 }
 
 /*-------------------------------------------------------------------------*/
