@@ -17,15 +17,15 @@ namespace def
 
    /* -------------------------- Motors ------------------------- */
   //Drivetrain
-   pros::Motor driveFL(11);
-   pros::Motor driveRL(12);
-   pros::Motor driveFR(13);
-   pros::Motor driveRR(14);
+   Motor driveFL(11);
+   Motor driveRL(12);
+   Motor driveFR(13);
+   Motor driveRR(14);
    //Shooter
-   pros::MotorGroup Flywheel({-18, 20});
+   MotorGroup Flywheel({-18, 20});
    //Intake&Roller
-   pros::Motor Intake(19);
-   pros::Motor Roller_Indexer(-10);
+   Motor Intake(19);
+   Motor Roller_Indexer(-10);
 
    //*------------------------Pneumatics----------------------*//
    //Pneumatics (Expansion)

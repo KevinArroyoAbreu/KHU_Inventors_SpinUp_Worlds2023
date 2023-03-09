@@ -17,10 +17,8 @@ void runAuton(){
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
-  //turnPID(-90);
-//  drive->moveDistance(24_in);
-//  turnPID(90);
-     rollerAuton();
+       pathFollowing();
+  //   rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
   //   progSkills();

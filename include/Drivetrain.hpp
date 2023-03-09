@@ -9,6 +9,14 @@
 //Include all header files
 #include "main.h"
 //___________________________________________________\\
+/*-----------------------------------------------------------------*/
+//Chassis Controller builders for Pure Pursuit Controllers
+/*-----------------------------------------------------------------*/
+//Chassis Controller
+extern std::shared_ptr<ChassisController> pcDrive;
+//Async Motion Profile Controller
+extern std::shared_ptr<AsyncMotionProfileController> profileController;
+
 
 /*-----------------------------------------------------------------*/
 //Chassis Controller builder: PID controller

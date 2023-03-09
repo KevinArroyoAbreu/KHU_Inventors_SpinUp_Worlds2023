@@ -15,7 +15,20 @@ and programming skills*/
 //--Remember: absolute---//
 //--heading is used------//
 //---------------------------------------------------\\
-
+/*-------------------------------------------------------------------------*/
+//#0: debuggingRoutineForPathFollowing ->
+/*-------------------------------------------------------------------------*/
+void pathFollowing(){
+  profileController->generatePath({
+      {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
+      {36_in, 12_in, 45_deg},
+      {50_in, 36_in, 90_deg},
+     }, // The next point in the profile, 3 feet forward, and 3 to the right
+      "A" // Profile name
+    );
+    profileController->setTarget("A");
+    profileController->waitUntilSettled();
+}
 
 /*-------------------------------------------------------------------------*/
 //#1: rollerAuton ->

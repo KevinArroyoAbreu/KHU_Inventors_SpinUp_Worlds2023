@@ -41,7 +41,7 @@
  */
 #include "okapi/api.hpp"
 #include "pros/apix.h"
-#include "pros/api_legacy.h"
+//#include "pros/api_legacy.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
@@ -52,8 +52,8 @@
  * namespace.
  */
 // using namespace pros;
- using namespace pros::literals;
-// using namespace okapi;
+// using namespace pros::literals;
+ using namespace okapi;
 
  using namespace okapi::literals;
 

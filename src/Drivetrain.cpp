@@ -6,6 +6,36 @@
 #include "main.h"
 
 ///////////////////////////////
+/*-----------------------------------------------------------------*/
+//Chassis Controller builders for Pure Pursuit Controllers
+/*-----------------------------------------------------------------*/
+//Chassis Controller
+std::shared_ptr<ChassisController> pcDrive =
+ChassisControllerBuilder()
+  .withMotors({11,-12},{-13,14} )
+  // Blue gearset, 2.75" inch wheel diameter,  inch wheel track; 36/60 transmission
+  .withDimensions({AbstractMotor::gearset::blue, (60.0 / 36.0)}, {{3.25_in, 11_in}, imev5BlueTPR})
+  .withSensors( IntegratedEncoder{ 11 }, IntegratedEncoder{ 13, true } )
+  /*.withGains(
+    {dkP, dkI, dkD}, // distance controller gains
+    {tkP, tkI, tkD}, // turn controller gains
+    {akP, akI, akD}
+  )*/
+  .withMaxVelocity(300)
+  .withOdometry(StateMode::CARTESIAN)
+  .build();
+
+
+//Async Motion Profile Controller
+std::shared_ptr<AsyncMotionProfileController> profileController =
+  AsyncMotionProfileControllerBuilder()
+      .withLimits({
+        1.0, // Maximum linear velocity of the Chassis in m/s
+        2.0, // Maximum linear acceleration of the Chassis in m/s/s
+        10.0 // Maximum linear jerk of the Chassis in m/s/s/s
+      })
+      .withOutput(pcDrive)
+      .buildMotionProfileController();
 
 
 /*-----------------------------------------------------------------*/
