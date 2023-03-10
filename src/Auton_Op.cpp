@@ -100,7 +100,8 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2) == 1) {
 }
 else{
   intakeStop();
-  pros::c::motor_move(10, pros::c::controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y)*(2));
+  rollerStop();
+  //pros::c::motor_move(10, pros::c::controller_get_analog(pros::E_CONTROLLER_MASTER, pros::E_CONTROLLER_ANALOG_RIGHT_Y)*(2));
   pros::delay(20);//prevent data loss
 }
 /*------------------------------------------*/

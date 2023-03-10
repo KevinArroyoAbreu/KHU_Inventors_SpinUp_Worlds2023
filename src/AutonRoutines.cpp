@@ -25,9 +25,14 @@ void pathFollowing(){
      },
       "A" // Profile name
     );
-    profileController->setTarget("A");
-    profileController->waitUntilSettled();
 
+    pcDrive->driveToPoint({0_in, 24_in});
+
+  //  profileController->setTarget("A");
+    profileController->waitUntilSettled();
+//while(1){
+  //pros::screen::print(TEXT_MEDIUM, 3, "Location: %d", pcDrive->getState());
+ //}
 
 }
 

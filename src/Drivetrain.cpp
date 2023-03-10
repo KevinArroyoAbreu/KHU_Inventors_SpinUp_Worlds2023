@@ -20,8 +20,8 @@ ChassisControllerBuilder()
     {tkP, tkI, tkD}, // turn controller gains
     {akP, akI, akD}
   )*/
-  //.withMaxVelocity(300)
-  .withOdometry(StateMode::CARTESIAN)
+  .withMaxVelocity(300)
+  .withOdometry()
   .buildOdometry();
 
 
