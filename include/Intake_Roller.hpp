@@ -21,4 +21,4 @@ void angleUp();
 void scoreRollerAuton();
 void rollerStop();
 void rollerV(int velocity);
-void stopWColor();
+void opticalRoller();

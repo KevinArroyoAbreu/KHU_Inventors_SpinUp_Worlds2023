@@ -19,17 +19,16 @@ and programming skills*/
 //#0: debuggingRoutineForPathFollowing ->
 /*-------------------------------------------------------------------------*/
 void pathFollowing(){
-  profileController->generatePath({
-      {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
-      {2_ft, 0_ft, 0_deg},
-     },
-      "A" // Profile name
-    );
+//profileController->generatePath({
+  //    {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
+  //    {2_ft, 0_ft, 0_deg},
+  //   },
+   //   "A" // Profile name
+   // );
+    pcDrive->driveToPoint({24_in, 24_in});
 
-    pcDrive->driveToPoint({0_in, 24_in});
-
-  //  profileController->setTarget("A");
-    profileController->waitUntilSettled();
+    //profileController->setTarget("A");
+    //profileController->waitUntilSettled();
 //while(1){
   //pros::screen::print(TEXT_MEDIUM, 3, "Location: %d", pcDrive->getState());
  //}
@@ -126,24 +125,45 @@ void fullWpAuton(){
 //#4: progSkills --> Programming Skills Routine (USE ONLY 1 PRELOAD!!!!!) to prevent jamming
 /*-------------------------------------------------------------------------*/
 void  progSkills(){
-  rollerV(-200);//Score Roller 1
-  skills->moveDistance(-3_in);
-  pros::delay(0);
+  //-- Score Roller 1
+  //=========================================================
+  flySpinToV(365);//turn on Flywheel
+  pcDrive->driveToPoint({-2_in, 0_in}, true);// true == bckwd
+  opticalRoller();//Score Roller 1
+  pcDrive->driveToPoint({3_in, 0_in});
+  intakeV(600);//turn on intake
+  //-- Intake 1 disc / turn 2nd Roller
+  //=========================================================
+  pcDrive->driveToPoint({17_in, -10_in});//front, side (relative to beginning)
+ // pcDrive->turnToAngle(93_deg);//+ right // - left
+  pcDrive->driveToPoint({17_in, -19_in}, true);
+  opticalRoller();
   rollerStop();
-  skills->moveDistance(3_in);
-  //-------------------------
+  pcDrive->driveToPoint({17_in, -16_in}); 
   intakeV(600);
-  rollerV(-200);
-  turn->turnAngle(-40_deg);
-  skills->moveDistance(22_in);
-  turn->turnAngle(135_deg);
-  rollerV(-200);  //Score Roller 2
+  //-- Shot #1 (3 discs)
+  //=========================================================
+  pcDrive->driveToPoint({40_in, -14_in});
+  shoot1by1(3);
+  //-- Intake (3 discs)
+  //=========================================================
+  pcDrive->driveToPoint({30_in, -14_in}, true);
+  intakeV(600);
+  pcDrive->driveToPoint({65_in, 20_in});//intake discs
+  //-- Shot #2 (3 discs)
+  //=========================================================
+  pcDrive->turnToAngle(-45_deg);
+  shoot();
+  pros::delay(2000);
+
+  pros::delay(20000);
+
   skills->moveDistance(-12_in);
   pros::delay(0);
   rollerStop();
   //------------------------
   skills->moveDistance(8_in);
-  turn->turnAngle(-95_deg);
+  turn->turnAngle(-95_deg); 
   flySpinToV(360); //normal shooting
   skills->moveDistance(32_in);
   turn->turnAngle(10_deg);

@@ -21,7 +21,7 @@ void shoot(){
 }
 void shoot1(int delay){
   while(def::discDetector.get_value() >= 40){
-   shoot();
+   def::Roller_Indexer.moveVelocity(-150);
   }
   rollerStop();
   pros::delay(delay);
@@ -65,9 +65,11 @@ void rollerStop(){
 void rollerV(int velocity){
   def::Roller_Indexer.moveVelocity(velocity);
 }
-void stopWColor(){
-  if(22 <= def::optical.get_hue() >= 1 || 340 <= def::optical.get_hue() <= 359.5 ){
-    pros::delay(800);
-    def::Roller_Indexer.moveVelocity(0);
+void opticalRoller(){
+  while(260 < def::optical.get_hue() < 100){
+    rollerV(200);
+    pros::delay(10);
    }
+   pros::delay(300);
+   rollerStop();
 }

@@ -14,14 +14,16 @@
 void runAuton(){
    //lower angle
    angleDown();
+   //turn on optical sensor led
+   def::optical.set_led_pwm(50);
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
-       pathFollowing();
+  //     pathFollowing();
   //   rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
-  //   progSkills();
+     progSkills();
   //   progSkillsPID();
 
 //  while(1)

@@ -10,7 +10,7 @@
 
 //PID
 // distance controller gains
-float dkP = 0.0025;
+float dkP = 0.0025;//0.0025
 float dkI = 0.0000;
 float dkD = 0.00004;
 // turn controller gains
