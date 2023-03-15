@@ -125,34 +125,33 @@ void fullWpAuton(){
 //#4: progSkills --> Programming Skills Routine (USE ONLY 1 PRELOAD!!!!!) to prevent jamming
 /*-------------------------------------------------------------------------*/
 void  progSkills(){
-  //-- Score Roller 1
+  //-- Score Roller 1 (2.5 to the right)
   //=========================================================
   flySpinToV(365);//turn on Flywheel
   rollerV(200);
-  pcDrive->driveToPoint({-1.2_in, 0_in}, true);// true == bckwd
+  pcDrive->driveToPoint({-1.2_in, 0_in}, true);//front, side (relative to beginning) // true == bckwd
   opticalRoller();//Score Roller 1
   pcDrive->driveToPoint({3_in, 0_in});
   intakeV(600);//turn on intake
   //-- Intake 1 disc / turn 2nd Roller
   //=========================================================
-  pcDrive->driveToPoint({17_in, -10_in});//front, side (relative to beginning)
+  pcDrive->driveToPoint({15_in, -12.5_in});
  // pcDrive->turnToAngle(93_deg);//+ right // - left
   rollerV(200);
-  pcDrive->driveToPoint({18_in, -18.2_in}, true);
+  pcDrive->driveToPoint({17_in, -22.6_in}, true);
   opticalRoller();
-  pcDrive->driveToPoint({17_in, -16_in}); 
+  pcDrive->driveToPoint({15_in, -18.5_in}); 
   intakeV(600);
   //-- Shot #1 (3 discs)
   //=========================================================
-  pcDrive->driveToPoint({40_in, -13_in});
+  pcDrive->driveToPoint({40_in, -15.5_in});
   shoot();
   pros::delay(2000);
   //-- Intake (3 discs)
   //=========================================================
   intakeV(600);
-  pcDrive->driveToPoint({30_in, -13_in}, true);
-
-  pcDrive->driveToPoint({67_in, 22_in});//intake discs
+  pcDrive->driveToPoint({30_in, -15.5_in}, true);
+  pcDrive->driveToPoint({67_in, 20_in});//intake discs
   //-- Shot #2 (3 discs)
   //=========================================================
   pcDrive->turnToAngle(-45_deg);
@@ -162,12 +161,15 @@ void  progSkills(){
   //=========================================================
   intakeV(600);
   flySpinToV(380);//new rpm
-  pcDrive->driveToPoint({109_in, 60_in});//intake discs (+42, +38)
+  pcDrive->driveToPoint({95_in, 46_in});//intake discs (+42, +38)
   //-- Shot #3 (3 discs)
   //=========================================================
-  pcDrive->turnToAngle(-85_deg);
+  pcDrive->driveToPoint({95_in, 30_in});
+  pcDrive->turnToAngle(-80_deg);
   shoot();
   pros::delay(2000);
+  //-- Score Roller 3
+  //=========================================================
 
   pros::delay(20000);
 
