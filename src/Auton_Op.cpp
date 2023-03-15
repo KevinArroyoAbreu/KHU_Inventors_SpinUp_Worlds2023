@@ -15,7 +15,7 @@ void runAuton(){
    //lower angle
    angleDown();
    //turn on optical sensor led
-   def::optical.set_led_pwm(50);
+   def::optical.set_led_pwm(60);
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
@@ -23,8 +23,9 @@ void runAuton(){
   //   rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
-     progSkills();
+       progSkills();
   //   progSkillsPID();
+  // printf("Hue value: %lf \n", def::optical.get_hue());
 
 //  while(1)
 //  {
@@ -36,7 +37,8 @@ void runAuton(){
 
 void runOp(){
   //set brake mode to coast
-
+  //turn on optical sensor led
+  def::optical.set_led_pwm(0);
   setDriveCoast();
   pros::screen::erase();
 

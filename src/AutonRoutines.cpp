@@ -128,7 +128,8 @@ void  progSkills(){
   //-- Score Roller 1
   //=========================================================
   flySpinToV(365);//turn on Flywheel
-  pcDrive->driveToPoint({-2_in, 0_in}, true);// true == bckwd
+  rollerV(200);
+  pcDrive->driveToPoint({-1.2_in, 0_in}, true);// true == bckwd
   opticalRoller();//Score Roller 1
   pcDrive->driveToPoint({3_in, 0_in});
   intakeV(600);//turn on intake
@@ -136,23 +137,35 @@ void  progSkills(){
   //=========================================================
   pcDrive->driveToPoint({17_in, -10_in});//front, side (relative to beginning)
  // pcDrive->turnToAngle(93_deg);//+ right // - left
-  pcDrive->driveToPoint({17_in, -19_in}, true);
+  rollerV(200);
+  pcDrive->driveToPoint({18_in, -18.2_in}, true);
   opticalRoller();
-  rollerStop();
   pcDrive->driveToPoint({17_in, -16_in}); 
   intakeV(600);
   //-- Shot #1 (3 discs)
   //=========================================================
-  pcDrive->driveToPoint({40_in, -14_in});
-  shoot1by1(3);
+  pcDrive->driveToPoint({40_in, -13_in});
+  shoot();
+  pros::delay(2000);
   //-- Intake (3 discs)
   //=========================================================
-  pcDrive->driveToPoint({30_in, -14_in}, true);
   intakeV(600);
-  pcDrive->driveToPoint({65_in, 20_in});//intake discs
+  pcDrive->driveToPoint({30_in, -13_in}, true);
+
+  pcDrive->driveToPoint({67_in, 22_in});//intake discs
   //-- Shot #2 (3 discs)
   //=========================================================
   pcDrive->turnToAngle(-45_deg);
+  shoot();
+  pros::delay(2000);
+  //-- Intake (disc stack (3))
+  //=========================================================
+  intakeV(600);
+  flySpinToV(380);//new rpm
+  pcDrive->driveToPoint({109_in, 60_in});//intake discs (+42, +38)
+  //-- Shot #3 (3 discs)
+  //=========================================================
+  pcDrive->turnToAngle(-85_deg);
   shoot();
   pros::delay(2000);
 
