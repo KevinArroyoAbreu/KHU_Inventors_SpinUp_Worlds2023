@@ -23,7 +23,8 @@ void runAuton(){
   //   rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
-       progSkills();
+       //progSkills();
+       progSkillsShort();
   //   progSkillsPID();
   // printf("Hue value: %lf \n", def::optical.get_hue());
 

@@ -35,6 +35,11 @@ void fullWpAuton();
 void  progSkills();
 
 /*-------------------------------------------------------------------------*/
-//#5: progSkillsPID --> Skills with PID turns
+//#5: progSkillsShort --> short routine (2 rollers, some discs, expansion) about 90pts
+/*-------------------------------------------------------------------------*/
+void  progSkillsShort();
+
+/*-------------------------------------------------------------------------*/
+//#6: progSkillsPID --> Skills with PID turns
 /*-------------------------------------------------------------------------*/
 void  progSkillsPID();

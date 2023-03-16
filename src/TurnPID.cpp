@@ -79,12 +79,13 @@ Drivetrain turns with PID and inertial sensor*/
         totalError += error;
 
         double power = error * turnkP + derivative * turnkD + totalError * turnkI;
+        int outputSpeed = 3*pow(power, 3);// = 3*[power^3]
 
         if(heading > desireValue ){ // for left turns
-          turnLeft(2*power);
+          turnLeft(outputSpeed);//2*pwr --> pwr^2 will give more agressiveness
         }
         else if(heading < desireValue){ // for right turns
-          turnRight(2*power);
+          turnRight(outputSpeed);
         }
 
 

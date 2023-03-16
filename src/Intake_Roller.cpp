@@ -19,6 +19,9 @@ void intakeStop(){
 void shoot(){
  def::Roller_Indexer.moveVelocity(-200);
 }
+void shootSlow(){
+ def::Roller_Indexer.moveVelocity(-110);
+}
 void shoot1(int delay){
   while(def::discDetector.get_value() >= 40){
    def::Roller_Indexer.moveVelocity(-120);
@@ -70,6 +73,6 @@ void opticalRoller(){
     rollerV(200);
     pros::delay(15);
   }
-  pros::delay(200);
+  pros::delay(0);
   rollerStop();
 }

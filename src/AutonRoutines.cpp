@@ -250,13 +250,61 @@ void  progSkills(){
   //////////////////////
 }
 
+/*-------------------------------------------------------------------------*/
+//#5: progSkillsShort --> short routine (2 rollers, some discs, expansion) about 90pts
+/*-------------------------------------------------------------------------*/
+void  progSkillsShort(){
+  //-- Score Roller 1 (2.5 to the right)
+  //=========================================================
+  flySpinToV(365);//turn on Flywheel
+  rollerV(200);
+  pcDrive->driveToPoint({-1.2_in, 0_in}, true);//front, side (relative to beginning) // true == bckwd
+  opticalRoller();//Score Roller 1
+  pcDrive->driveToPoint({3_in, 0_in});
+  intakeV(600);//turn on intake
+  //-- Intake 1 disc / turn 2nd Roller
+  //=========================================================
+  turnPID(-40);
+  pcDrive->moveDistance(15_in);
+  turnPID(84);
+  rollerV(200);
+  pcDrive->moveDistance(-13_in);
+  opticalRoller();
+  pcDrive->moveDistance(6_in);
+  intakeV(600);
+  //-- Shot #1 (3 discs)
+  //=========================================================
+  turnPID(10);
+  pcDrive->moveDistance(24_in);
+  shootSlow();
+  pros::delay(4000);
+  //-- Accomodate for expansion
+  //=========================================================
+  pcDrive->moveDistance(-30_in);
+  turnPID(45);
+  //-- Expand
+  //=========================================================
+  normalExpansion();
+  pcDrive->setMaxVelocity(100);
+  pcDrive->moveDistance(-8_in);
 
+  ////END-OF-ROUTINE/////////
+  //_______________________//
+  //Expected Results:      //
+  // --------------------- //
+  // --2x Rollers          //
+  // -- 3x High Discs      // 
+  // -- ~26-28 tiles       //
+  //_______________________//
+  // TOTAL: ~113 - 119 pts //
+  ///////////////////////////
+}
 
 
 
 
 /*-------------------------------------------------------------------------*/
-//#5: progSkillsPID --> Skills with PID turns
+//#6: progSkillsPID --> Skills with PID turns
 /*-------------------------------------------------------------------------*/
 void  progSkillsPID(){
   rollerV(-200);//Score Roller 1

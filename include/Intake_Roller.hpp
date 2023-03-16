@@ -14,6 +14,7 @@
 void intakeV(int velocity);
 void intakeStop();
 void shoot();
+void shootSlow();
 void shoot1(int delay);
 void shoot1by1(int discQuantity);
 void angleDown();
