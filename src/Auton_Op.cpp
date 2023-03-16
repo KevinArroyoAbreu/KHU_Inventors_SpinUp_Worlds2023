@@ -72,16 +72,16 @@ int turnMovementFunct = turnJoystick;
 //Shooter; Operator Control:
 /*------------------------------------------*/
 if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {
-  angleUp();
+  angleDown();
   flySpinToV(360);//350 (hard shooting)
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
-  angleUp();
+  angleDown();
   flySpinToV(600);
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
   angleDown();
-  flySpinToV(410);
+  flySpinToV(345);// shoot from little farther than usual
 }
 else{
   angleUp();

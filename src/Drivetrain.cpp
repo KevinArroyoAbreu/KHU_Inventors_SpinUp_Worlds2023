@@ -15,12 +15,12 @@ ChassisControllerBuilder()
   .withMotors({11,-12},{-13,14} )
   // Blue gearset, 3.25" inch wheel diameter, 10 inch wheel track; 36/60 transmission
   .withDimensions({AbstractMotor::gearset::blue, (60 / 36)}, {{3.25_in/2, 10_in}, imev5BlueTPR})
-  .withGains(
+ /* .withGains(
     {dkP, dkI, dkD}, // distance controller gains
     {tkP, tkI, tkD}, // turn controller gains
     {akP, akI, akD}
-  )
-  .withMaxVelocity(270)
+  )*/
+  .withMaxVelocity(260)
   .withOdometry()
   .buildOdometry();
 
