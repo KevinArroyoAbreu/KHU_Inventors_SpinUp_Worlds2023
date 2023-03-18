@@ -256,37 +256,37 @@ void  progSkills(){
 void  progSkillsShort(){
   //-- Score Roller 1 (2.5 to the right)
   //=========================================================
-  flySpinToV(365);//turn on Flywheel
+  flySpinToV(370);//turn on Flywheel
   rollerV(200);
-  pcDrive->driveToPoint({-1.2_in, 0_in}, true);//front, side (relative to beginning) // true == bckwd
+  pcDrive->moveDistance(-1.2_in);//front, side (relative to beginning) // true == bckwd
   opticalRoller();//Score Roller 1
-  pcDrive->driveToPoint({3_in, 0_in});
+  pcDrive->moveDistance(4_in);
   intakeV(600);//turn on intake
   //-- Intake 1 disc / turn 2nd Roller
   //=========================================================
-  turnPID(-40);
+  pcDrive->turnToAngle(-40_deg);
   pcDrive->moveDistance(15_in);
-  turnPID(84);
+  pcDrive->turnToAngle(76_deg);
   rollerV(200);
-  pcDrive->moveDistance(-13_in);
+  pcDrive->moveDistance(-10.5_in);
   opticalRoller();
   pcDrive->moveDistance(6_in);
   intakeV(600);
   //-- Shot #1 (3 discs)
   //=========================================================
-  turnPID(10);
+  pcDrive->turnToAngle(8_deg);
   pcDrive->moveDistance(24_in);
   shootSlow();
-  pros::delay(4000);
+  pros::delay(3000);
+  pcDrive->turnToAngle(-14_deg);
   //-- Accomodate for expansion
   //=========================================================
-  pcDrive->moveDistance(-30_in);
-  turnPID(45);
+  pcDrive->moveDistance(-26_in);
+  pcDrive->setMaxVelocity(100);
+  pcDrive->turnToAngle(40_deg);
   //-- Expand
   //=========================================================
   normalExpansion();
-  pcDrive->setMaxVelocity(100);
-  pcDrive->moveDistance(-8_in);
 
   ////END-OF-ROUTINE/////////
   //_______________________//

@@ -38,9 +38,9 @@ Drivetrain turns with PID and inertial sensor*/
     }
 
     // turn controller gains
-    float turnkP = 0.8;
-    float turnkI = 0.2;
-    float turnkD = 0.04;
+    float turnkP = 0.6;//0.8
+    float turnkI = 0.04;//0.2
+    float turnkD = 0.04;//0.04 //0.1 is acceptable
 
     double error;
     int prevError = 0;
@@ -79,7 +79,9 @@ Drivetrain turns with PID and inertial sensor*/
         totalError += error;
 
         double power = error * turnkP + derivative * turnkD + totalError * turnkI;
-        int outputSpeed = 3*pow(power, 3);// = 3*[power^3]
+       // double power = turnkP * error + ( turnkI * integral(error*derivative*t) ) + turnkD( (derivative*error) / derivative*t) ;
+        //int outputSpeed = 3*pow(power, 3);// = 3*[power^3]
+        int outputSpeed = pow(power, 2);// = 2*[power^2]
 
         if(heading > desireValue ){ // for left turns
           turnLeft(outputSpeed);//2*pwr --> pwr^2 will give more agressiveness
@@ -90,7 +92,7 @@ Drivetrain turns with PID and inertial sensor*/
 
 
         pros::screen::print(TEXT_MEDIUM, 5, "Power: %f", power);
-        if(power <= 10){
+        if(power <= 0.5){
           turning = false;
         }
         pros::delay(20);
