@@ -20,12 +20,12 @@ void runAuton(){
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
   //     pathFollowing();
-  //   rollerAuton();
+     rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
        //progSkills();
      //  turnPID(90);
-       progSkillsShort();
+     //  progSkillsShort();
   //   progSkillsPID();
   // printf("Hue value: %lf \n", def::optical.get_hue());
 

@@ -274,7 +274,7 @@ void  progSkillsShort(){
   intakeV(600);
   //-- Shot #1 (3 discs)
   //=========================================================
-  pcDrive->turnToAngle(8_deg);
+  pcDrive->turnToAngle(6.5_deg);
   pcDrive->moveDistance(24_in);
   shootSlow();
   pros::delay(3000);
