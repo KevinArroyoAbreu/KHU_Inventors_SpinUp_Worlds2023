@@ -30,7 +30,7 @@ void runAuton(){
   // printf("Hue value: %lf \n", def::optical.get_hue());
 
 //  while(1)
-//  {
+//  { 
 //    pros::screen::print(TEXT_LARGE, 3, "Inertial: %f", def::inertial.get_heading());
 //    pros::delay(20);
 //  }

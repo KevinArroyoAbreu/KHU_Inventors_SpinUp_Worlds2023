@@ -100,24 +100,34 @@ Drivetrain turns with PID and inertial sensor*/
       driveStop();
     }
 
+void turnInertial(double desireValue){//degrees
+      bool turning = true;
+      int speed = 200; //rpm of drive
+      while(turning){
+
+        double  heading;
+
+        if(180 >= def::inertial.get_heading() & def::inertial.get_heading() >= 0){
+          heading = def::inertial.get_heading();
+        }
+        else if( 360 >= def::inertial.get_heading() & def::inertial.get_heading() >= 180){
+          heading = def::inertial.get_heading() - 360;
+        }
+
+        pros::screen::print(TEXT_MEDIUM, 3, "Heading: %f", heading);
+        totalError = error;
 
 
+        if(heading > desireValue ){ // for left turns
+          turnLeft(speed);
+        }
+        else if(heading < desireValue){ // for right turns
+          turnRight(speed);
+        }
 
-void turnInertialL (int deg, int speed){
-  setDriveBrake();
-   while(def::inertial.get_heading() >= ( (360-deg) + 20 ) ){//20 degree threshold
-     turnLeft(speed);
-     pros::screen::print(TEXT_LARGE, 3, "Inertial: %f", def::inertial.get_heading());
-     pros::delay(20);
-   }
-   driveStop();
- }
- void turnInertialR (int deg, int speed){
-   setDriveBrake();
-    while(def::inertial.get_heading() <= (deg - 10) ){//10 degree threshold
-      turnRight(speed);
-      pros::screen::print(TEXT_LARGE, 3, "Inertial: %f", def::inertial.get_heading());
-      pros::delay(20);
+
+        pros::screen::print(TEXT_MEDIUM, 5, "Speed: %f", speed);
+        pros::delay(20);
+      }
+      driveStop();
     }
-    driveStop();
-  }
