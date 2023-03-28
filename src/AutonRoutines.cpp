@@ -39,36 +39,46 @@ void pathFollowing(){
 //#1: rollerAuton ->
 /*-------------------------------------------------------------------------*/
 void rollerAuton(){
-  //1)Shoot
-  flySpinToV(415);
-  pros::delay(2500);//gain rpm
-  shoot();
-  pros::delay(2000);
-  //2)Intake 1 disc
-  //3)Turn Roller
-  drive->moveDistance(-2_in);
-  pros::delay(600);//turn roller (rollerSpinner is on since the shoot)
-  rollerStop();
-  //4) Approach 2nd shot / intake 2 discs
-  flySpinToV(415);//prepare second rpm FW
-  drive->moveDistance(2_in);
+  flySpinToV(402);
+ //1)Intake 1 disc
+  //rollerV(200);
+  //pcDrive->moveDistance(-1.5_in);
+ // pros::delay(500);
+ // rollerStop();
+ // pcDrive->moveDistance(3_in);
+ // intakeV(600);
+  //pcDrive->turnToAngle(-40_deg);
+  //pcDrive->moveDistance(3_in);
+  //pros::delay(200);
+  //pcDrive->moveDistance(-1_in);
+ // pcDrive->turnToAngle(-10_deg);
+   //2)Shoot
+  pros::delay(3500);
+  shoot1by1(2);
+  //3)turnRoller
+  rollerV(200);
+  pcDrive->moveDistance(-1.3_in);
+  pcDrive->moveDistance(3_in);
+  flySpinToV(390);//prepare second rpm FW
   intakeV(600);
-  turnPID(53);//Right
-  drive->moveDistance(36_in);
+  pcDrive->turnToAngle(46_deg);//Right
+  pcDrive->setMaxVelocity(400);
+  pcDrive->moveDistance(50_in);//36
   //5) Align and shoot
-  turn->turnAngle(-63_deg);//Left
-  shoot();
-  pros::delay(1000);
-  rollerStop();
-  flySpinToV(410);//prepare third rpm FW
+ // pcDrive->turnToAngle(-30_deg);//Left
+  //shoot();
+//  pros::delay(1000);
+ // rollerStop();
+ // flySpinToV(390);//prepare third rpm FW
   //6)Intake Discs
-  turnPID(50);
+ // pcDrive->turnToAngle(48_deg);
   intakeV(600);
-  drive->moveDistance(14_in);
+ // pcDrive->moveDistance(14_in);
   //align with goal
-  turn->turnAngle(-74_deg);
+  pcDrive->setMaxVelocity(400);
+  pcDrive->turnToAngle(-30_deg);
   //7)Shoot
-  shoot();
+  shoot1by1(3);
   pros::delay(2500);
   rollerStop();
   flyStop();

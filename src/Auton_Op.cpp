@@ -87,7 +87,8 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 }
 else{
   angleUp();
-  flySpinToV(330);//mantain momentum (normal shooting) 330
+ //angleDown();
+  flySpinToV(320);//mantain momentum (normal shooting) 330
 }
 
 /*------------------------------------------*/

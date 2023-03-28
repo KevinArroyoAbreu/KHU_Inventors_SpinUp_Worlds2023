@@ -17,7 +17,7 @@ void intakeStop(){
   def::Intake.moveVelocity(0);
 }
 void shoot(){
- def::Roller_Indexer.moveVelocity(-200);
+ def::Roller_Indexer.moveVelocity(-180);
 }
 void shootSlow(){
  def::Roller_Indexer.moveVelocity(-110);
@@ -30,7 +30,7 @@ void shoot1(int delay){
   pros::delay(delay);
 }
 void shoot1by1(int discQuantity){
-  int delay = 500;
+  int delay = 200;
   if(discQuantity == 1){
     //One shot
     shoot1(delay);
@@ -39,7 +39,9 @@ void shoot1by1(int discQuantity){
     //First shot
     shoot1(delay);
     //Second shot
-    shoot1(delay);
+    shoot();
+    pros::delay(800);
+    rollerStop();
   }
   else if(discQuantity == 3){
     //First shot
@@ -47,7 +49,9 @@ void shoot1by1(int discQuantity){
     //Second shot
     shoot1(delay);
     //Third shot
-    shoot1(delay);
+    shoot();
+    pros::delay(800);
+    rollerStop();
   }
 
 }

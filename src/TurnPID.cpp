@@ -100,9 +100,12 @@ Drivetrain turns with PID and inertial sensor*/
       driveStop();
     }
 
-void turnInertial(double desireValue){//degrees
+void turnInertial(double desireValue, bool direction = false){//degrees
+      //true == left / false == right
+
       bool turning = true;
-      int speed = 200; //rpm of drive
+
+      int speed = 150; //rpm of drive
       while(turning){
 
         double  heading;
@@ -115,18 +118,26 @@ void turnInertial(double desireValue){//degrees
         }
 
         pros::screen::print(TEXT_MEDIUM, 3, "Heading: %f", heading);
-        totalError = error;
-
-
-        if(heading > desireValue ){ // for left turns
+  
+       //Left turns -----
+       if(direction == true){
+        if(heading > (-desireValue) ){ // for left turns
           turnLeft(speed);
         }
-        else if(heading < desireValue){ // for right turns
+        else{
+          turning == false;
+        }
+       }
+       //Right turns -----
+       else {
+        if(heading < (desireValue ) ){ // for left turns
           turnRight(speed);
         }
-
-
-        pros::screen::print(TEXT_MEDIUM, 5, "Speed: %f", speed);
+        else{
+          turning == false;
+        }
+       }
+  
         pros::delay(20);
       }
       driveStop();

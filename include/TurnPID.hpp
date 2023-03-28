@@ -30,4 +30,4 @@ void rotate( int degrees, int speed);
     extern int turnDifference;
 
     void turnPID(double DesireValue);
-    void turnInertial(double DesireValue);
+    void turnInertial(double DesireValue, bool direction);
