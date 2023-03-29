@@ -17,6 +17,7 @@ extern std::shared_ptr<OdomChassisController> pcDrive;
 //Async Motion Profile Controller
 extern std::shared_ptr<AsyncMotionProfileController> profileController;
 
+extern std::shared_ptr<OdomChassisController> rightDrive;
 
 /*-----------------------------------------------------------------*/
 //Chassis Controller builder: PID controller
@@ -31,5 +32,6 @@ extern std::shared_ptr<ChassisController> drive;
 //Set brake mode to coast
 void setDriveCoast();
 void setDriveBrake();
+void leftDriveBrake();
 //turn function
 void turnAngle(int deg);

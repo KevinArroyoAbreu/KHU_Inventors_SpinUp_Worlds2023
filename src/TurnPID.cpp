@@ -101,11 +101,11 @@ Drivetrain turns with PID and inertial sensor*/
     }
 
 void turnInertial(double desireValue, bool direction = false){//degrees
+
       //true == left / false == right
 
-      bool turning = true;
+     bool turning = true;
 
-      int speed = 150; //rpm of drive
       while(turning){
 
         double  heading;
@@ -118,27 +118,63 @@ void turnInertial(double desireValue, bool direction = false){//degrees
         }
 
         pros::screen::print(TEXT_MEDIUM, 3, "Heading: %f", heading);
-  
-       //Left turns -----
-       if(direction == true){
-        if(heading > (-desireValue) ){ // for left turns
-          turnLeft(speed);
+        totalError = error;
+
+        //Potential
+
+          error = abs( desireValue - heading );
+
+
+        pros::screen::print(TEXT_MEDIUM, 4, "Error: %f", error);
+        
+        double power = 0.5*abs(error);
+        int outputSpeed = 3*power;//6 
+
+        if(heading > desireValue ){ // for left turns
+          turnLeft(outputSpeed);
         }
-        else{
-          turning == false;
+        else if(heading < desireValue){ // for right turns
+          turnRight(outputSpeed);
         }
-       }
-       //Right turns -----
-       else {
-        if(heading < (desireValue ) ){ // for left turns
-          turnRight(speed);
+
+
+        pros::screen::print(TEXT_MEDIUM, 5, "Power: %f", power);
+        pros::screen::print(TEXT_MEDIUM, 5, "Output Speed: %f", outputSpeed);
+
+        if(power <= 0.5){
+          turning = false;
         }
-        else{
-          turning == false;
-        }
-       }
-  
         pros::delay(20);
       }
       driveStop();
+    }
+
+
+    //------------------------------------------------------------------------------
+    void rSideTurn(int degrees, bool direction){
+      leftDriveBrake();//hold
+      double distanceToMove = 5*(3.14*degrees/180);
+      double ticksToMove = (300*1.6*distanceToMove) / 8.2958; //1 rev = 1.625 / 1 rev = 300(1.6) ticks (3.25in wheels)
+
+    def::driveFR.tarePosition();
+    def::driveRR.tarePosition();
+
+  if(direction == false){//left
+   while( def::driveRR.getPosition() <= ticksToMove){
+     def::driveFR.moveVelocity(-180);
+     def::driveRR.moveVelocity(180);
+    }
+   }  
+   else if(direction == true){//right
+    while( def::driveRR.getPosition() >= -ticksToMove){
+     def::driveFR.moveVelocity(180);
+     def::driveRR.moveVelocity(-180);
+    }
+   }
+   
+      pros::c::motor_set_brake_mode(13, MOTOR_BRAKE_HOLD);
+      pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_HOLD);
+      def::driveFR.moveVelocity(0);
+      def::driveRR.moveVelocity(0);
+      
     }

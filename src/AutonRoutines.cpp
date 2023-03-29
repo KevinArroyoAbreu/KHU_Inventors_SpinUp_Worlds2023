@@ -39,47 +39,35 @@ void pathFollowing(){
 //#1: rollerAuton ->
 /*-------------------------------------------------------------------------*/
 void rollerAuton(){
-  flySpinToV(402);
- //1)Intake 1 disc
-  //rollerV(200);
-  //pcDrive->moveDistance(-1.5_in);
- // pros::delay(500);
- // rollerStop();
- // pcDrive->moveDistance(3_in);
- // intakeV(600);
-  //pcDrive->turnToAngle(-40_deg);
-  //pcDrive->moveDistance(3_in);
-  //pros::delay(200);
-  //pcDrive->moveDistance(-1_in);
- // pcDrive->turnToAngle(-10_deg);
-   //2)Shoot
-  pros::delay(3500);
-  shoot1by1(2);
-  //3)turnRoller
-  rollerV(200);
-  pcDrive->moveDistance(-1.3_in);
-  pcDrive->moveDistance(3_in);
-  flySpinToV(390);//prepare second rpm FW
+  flySpinToV(415);
+ // pros::delay(3000);
+ // shootatV(420, 425);
+ // pros::delay(20000);
+ //--------------------------
+ intakeV(600);
+ rSideTurn(70, false);
+ //pcDrive->moveDistance(2_in);
+ pros::delay(500);
+ rSideTurn(50, true);//to the right
+ pros::delay(1500);
+ shootatV(415, 418);//timer in case some discs arent detected correctly
+ rSideTurn(20, true);//straight
+ pcDrive->moveDistance(-2.5_in);
+ scoreRollerAuton();
+ pcDrive->moveDistance(3_in);
+ //continue routine
+  flySpinToV(420);//prepare second rpm FW
   intakeV(600);
-  pcDrive->turnToAngle(46_deg);//Right
-  pcDrive->setMaxVelocity(400);
-  pcDrive->moveDistance(50_in);//36
-  //5) Align and shoot
- // pcDrive->turnToAngle(-30_deg);//Left
-  //shoot();
-//  pros::delay(1000);
- // rollerStop();
- // flySpinToV(390);//prepare third rpm FW
-  //6)Intake Discs
- // pcDrive->turnToAngle(48_deg);
-  intakeV(600);
- // pcDrive->moveDistance(14_in);
-  //align with goal
-  pcDrive->setMaxVelocity(400);
-  pcDrive->turnToAngle(-30_deg);
+  pcDrive->turnAngle(43_deg);//Right
+  pcDrive->setMaxVelocity(200);
+  pcDrive->moveDistance(22_in);//36
+  pros::delay(200);
+  pcDrive->setMaxVelocity(200);
+  pcDrive->moveDistance(24_in);
+  pcDrive->turnAngle(-72_deg);
   //7)Shoot
-  shoot1by1(3);
-  pros::delay(2500);
+  shoot();
+  pros::delay(2000);
   rollerStop();
   flyStop();
   intakeStop();

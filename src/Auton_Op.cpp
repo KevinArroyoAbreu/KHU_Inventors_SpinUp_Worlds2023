@@ -15,7 +15,7 @@ void runAuton(){
    //lower angle
    angleDown();
    //turn on optical sensor led
-   def::optical.set_led_pwm(60);
+   //def::optical.set_led_pwm(60);
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
@@ -25,6 +25,7 @@ void runAuton(){
   //   fullWpAuton();
        //progSkills();
      //  turnPID(90);
+      // turnInertial(90, false);
      //  progSkillsShort();
   //   progSkillsPID();
   // printf("Hue value: %lf \n", def::optical.get_hue());
@@ -87,8 +88,9 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 }
 else{
   angleUp();
- //angleDown();
-  flySpinToV(320);//mantain momentum (normal shooting) 330
+// angleDown();
+  flySpinToV(345);//mantain momentum (normal shooting) 320
+  pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 
 /*------------------------------------------*/
@@ -96,10 +98,11 @@ else{
 /*------------------------------------------*/
 //Intake + Shoot and Roller + Angle Changer
 if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
-  shoot();
+  shoot();//normal
+ // shootatV(410, 415); //430
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == 1) {
-  intakeV(500);
+  intakeV(700);
 //  rollerV(-200);
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2) == 1) {

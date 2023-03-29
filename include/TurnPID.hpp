@@ -31,3 +31,4 @@ void rotate( int degrees, int speed);
 
     void turnPID(double DesireValue);
     void turnInertial(double DesireValue, bool direction);
+    void rSideTurn(int degrees, bool direction);
