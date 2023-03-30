@@ -84,12 +84,12 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
   angleDown();
-  flySpinToV(345);// shoot from little farther than usual
+  flySpinToV(355);// shoot from little farther than usual
 }
 else{
   angleUp();
 // angleDown();
-  flySpinToV(345);//mantain momentum (normal shooting) 320
+  flySpinToV(325);//mantain momentum (normal shooting) 320
   pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 

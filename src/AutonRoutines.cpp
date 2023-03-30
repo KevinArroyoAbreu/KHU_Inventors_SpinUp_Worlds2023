@@ -39,7 +39,7 @@ void pathFollowing(){
 //#1: rollerAuton ->
 /*-------------------------------------------------------------------------*/
 void rollerAuton(){
-  flySpinToV(415);
+  flySpinToV(400);
  // pros::delay(3000);
  // shootatV(420, 425);
  // pros::delay(20000);
@@ -47,23 +47,22 @@ void rollerAuton(){
  intakeV(600);
  rSideTurn(70, false);
  //pcDrive->moveDistance(2_in);
- pros::delay(500);
+ pros::delay(100);
  rSideTurn(50, true);//to the right
- pros::delay(1500);
- shootatV(415, 418);//timer in case some discs arent detected correctly
- rSideTurn(20, true);//straight
+ pros::delay(1500);//1500
+ shootatV(400, 405);//avg. for shooting at correct velocity
  pcDrive->moveDistance(-2.5_in);
  scoreRollerAuton();
  pcDrive->moveDistance(3_in);
  //continue routine
-  flySpinToV(420);//prepare second rpm FW
+  flySpinToV(410);//prepare second rpm FW
   intakeV(600);
-  pcDrive->turnAngle(43_deg);//Right
-  pcDrive->setMaxVelocity(200);
+  pcDrive->turnAngle(41_deg);//Right
+  pcDrive->setMaxVelocity(300);//200
   pcDrive->moveDistance(22_in);//36
   pros::delay(200);
   pcDrive->setMaxVelocity(200);
-  pcDrive->moveDistance(24_in);
+  pcDrive->moveDistance(20_in);
   pcDrive->turnAngle(-72_deg);
   //7)Shoot
   shoot();

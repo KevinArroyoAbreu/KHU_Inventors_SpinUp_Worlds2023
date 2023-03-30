@@ -89,7 +89,7 @@ void angleUp(){
 }
 void scoreRollerAuton(){
  rollerV(-200);
- pros::delay(400);
+ pros::delay(200);//400
  rollerStop();
 }
 void rollerStop(){
