@@ -112,10 +112,10 @@ void setDriveCoast(){
   pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_COAST);
 }
 void setDriveBrake(){
-  pros::c::motor_set_brake_mode(11, MOTOR_BRAKE_BRAKE);
-  pros::c::motor_set_brake_mode(12, MOTOR_BRAKE_BRAKE);
-  pros::c::motor_set_brake_mode(13, MOTOR_BRAKE_BRAKE);
-  pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_BRAKE);
+  pros::c::motor_set_brake_mode(11, MOTOR_BRAKE_HOLD);
+  pros::c::motor_set_brake_mode(12, MOTOR_BRAKE_HOLD);
+  pros::c::motor_set_brake_mode(13, MOTOR_BRAKE_HOLD);
+  pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_HOLD);
 }
 void leftDriveBrake(){
   pros::c::motor_set_brake_mode(11, MOTOR_BRAKE_HOLD);

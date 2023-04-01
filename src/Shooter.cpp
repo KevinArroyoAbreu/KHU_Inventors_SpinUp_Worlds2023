@@ -25,9 +25,9 @@ void flyStop(){
 
 void fwPID(double targetV){
 
-    double kP = 0.3;//0.1
-    double kI = 0.04;//0.01
-    double errorIntegral = 0;
+    double kP = 0.2;//0.1
+    double kI = 0.01;//0.01
+    double errorIntegral = 0.5;
     
     while(true){
         double velocity = def::Flywheel.getActualVelocity();//0-600rpm
@@ -39,7 +39,8 @@ void fwPID(double targetV){
 
         //Update Motor speed
         def::Flywheel.moveVelocity(outputSpeed);
-
+        pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", velocity);
+        pros::screen::print(TEXT_LARGE, 6, "Input V: %f", outputSpeed);
         pros::delay(20);
     }
 

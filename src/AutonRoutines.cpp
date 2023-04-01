@@ -81,7 +81,7 @@ void nonRollerAuton(){
  intakeV(600);
  rollerV(-200);
  drive->moveDistance(32_in);
- turnPID(41);
+/// turnPID(41);
  drive->moveDistance(6_in);
  intakeV(-600);
  shoot();
@@ -89,9 +89,9 @@ void nonRollerAuton(){
  pros::delay(4000);
  flyStop();
  rollerStop();
- turnPID(-43);
+ //turnPID(-43);
  drive->moveDistance(-52_in);
- turnPID(0.2);
+// turnPID(0.2);
  drive->moveDistance(-9_in);
  scoreRollerAuton();
  drive->moveDistance(2_in);
@@ -122,129 +122,127 @@ void fullWpAuton(){
 //#4: progSkills --> Programming Skills Routine (USE ONLY 1 PRELOAD!!!!!) to prevent jamming
 /*-------------------------------------------------------------------------*/
 void  progSkills(){
-  //-- Score Roller 1 (2.5 to the right)
+    //-- Score Roller 1 (2.5 to the right)
   //=========================================================
   flySpinToV(365);//turn on Flywheel
   rollerV(200);
-  pcDrive->driveToPoint({-1.2_in, 0_in}, true);//front, side (relative to beginning) // true == bckwd
+  pcDrive->moveDistance(-1.2_in);//front, side (relative to beginning) // true == bckwd
   opticalRoller();//Score Roller 1
-  pcDrive->driveToPoint({3_in, 0_in});
   intakeV(600);//turn on intake
   //-- Intake 1 disc / turn 2nd Roller
   //=========================================================
-  pcDrive->driveToPoint({15_in, -12.5_in});
- // pcDrive->turnToAngle(93_deg);//+ right // - left
+  rSideTurn(70, false);
+  pros::delay(200);
+  pcDrive->moveDistance(13_in);
+  //pcDrive->turnToAngle(76_deg);
+  turnPID(90, 1.5);//1.5 second timer
   rollerV(200);
-  pcDrive->driveToPoint({17_in, -22_in}, true);
+  pcDrive->setMaxVelocity(200);
+  pcDrive->moveDistance(-12.8_in);//-13
   opticalRoller();
-  pcDrive->driveToPoint({17_in, -18.5_in}); 
+  pcDrive->moveDistance(8_in);
   intakeV(600);
   //-- Shot #1 (3 discs)
   //=========================================================
-  pcDrive->driveToPoint({40_in, -15.5_in});
-  shoot();
-  pros::delay(2000);
-  //-- Intake (3 discs)
+  turnPID(10, 1.5);
+  pcDrive->setMaxVelocity(220);
+  pcDrive->moveDistance(26_in);
+  shootSlow();
+  pros::delay(3000);
+  //-- Intake #2
   //=========================================================
+  pcDrive->moveDistance(-14_in);
+  turnPID(53, 1.5);
   intakeV(600);
-  pcDrive->setMaxVelocity(160);
-  pcDrive->driveToPoint({30_in, -15.5_in}, true);
-  pcDrive->setMaxVelocity(160);
-  pcDrive->driveToPoint({67_in, 20_in});//intake discs
-  //-- Shot #2 (3 discs)
+  pcDrive->moveDistance(50_in);
+  // -- Shoot#2
   //=========================================================
-  pcDrive->setMaxVelocity(260);
-  pcDrive->turnToAngle(-45_deg);
+  turnPID(-35, 1.5);
   shoot();
-  pros::delay(2000);
-  //-- Intake (disc stack (3))
+  pros::delay(3000);
+  flySpinToV(390);
+  // -- Stack(Intake)#1
   //=========================================================
+  turnPID(48, 1.5);
   intakeV(600);
-  flySpinToV(380);//new rpm
-  pcDrive->driveToPoint({95_in, 46_in});//intake discs (+42, +38)
-  //-- Shot #3 (3 discs)
+  pcDrive->setMaxVelocity(300);
+  pcDrive->moveDistance(20_in);
+  pcDrive->setMaxVelocity(160);
+  pcDrive->moveDistance(25_in);
+  // -- Shoot#3
   //=========================================================
-  pcDrive->driveToPoint({95_in, 30_in});
-  pcDrive->turnToAngle(-80_deg);
-  shoot();
-  pros::delay(2000);
-  //-- Score Roller 3
+  turnPID(-78, 1.5);
+  shootSlow();
+  pros::delay(3000);
+  //--REPEAT on other side(Mirrored field)
+  // -- Roller#3
   //=========================================================
-  pcDrive->driveToPoint({95_in, 68_in}, true);
-  pcDrive->driveToPoint({110_in, 74_in}, true);
+  pcDrive->setMaxVelocity(220);
+  pcDrive->moveDistance(-8.4_in);
+  turnPID(-170, 2);
+  pcDrive->moveDistance(-8_in);
+  opticalRoller();//Score Roller 3
+  //-- Intake 1 disc / turn 4th Roller
+  //=========================================================
+  rSideTurn(70, false);
+  pros::delay(200);
+  pcDrive->moveDistance(13_in);
+  //pcDrive->turnToAngle(76_deg);
+  turnPID(-90, 1.5);//1.5 second timer
+  rollerV(200);
+  pcDrive->setMaxVelocity(200);
+  pcDrive->moveDistance(-13_in);
   opticalRoller();
-  pcDrive->driveToPoint({107_in, 74_in});
-   //-- Score Roller 4 (intake 1 disc)
+  pcDrive->moveDistance(8_in);
+  intakeV(600);
+  //-- Shot #4 (1 disc)
   //=========================================================
-
-  pros::delay(20000);
-
-  skills->moveDistance(-12_in);
-  pros::delay(0);
-  rollerStop();
-  //------------------------
-  skills->moveDistance(8_in);
-  turn->turnAngle(-95_deg); 
-  flySpinToV(360); //normal shooting
-  skills->moveDistance(32_in);
-  turn->turnAngle(10_deg);
-  shoot();  //Score 2 discs( 1 preload + 1 intaked)
-  pros::delay(4000);
-  turn->turnAngle(80_deg);
-  flyStop();
-  //------------------------
-  //intake 1 disc on path
+  turnPID(10, 1.5);
+  pcDrive->setMaxVelocity(220);
+  pcDrive->moveDistance(26_in);
+  shootSlow();
+  pros::delay(1500);
+  //-- Intake #2 repeat
+  //=========================================================
+  pcDrive->moveDistance(-14_in);
+  turnPID(55, 1.5);
   intakeV(600);
-  rollerV(-200);
-  skills->moveDistance(20_in);
-  //Align with discs
-  turn->turnAngle(-45_deg);
-  //Intake 2 discs
-  skills->moveDistance(35_in);
-  // Align with blue goal
-  turn->turnAngle(-90_deg);
-  flySpinToV(380);
-  intakeV(-600);//prevent jamming
-  pros::delay(500);
-  shoot();//shoot 2-3 intaked discs
-  pros::delay(2000);
-  //--------------------------
-  //Approach 2nd roller pair
-  skills->moveDistance(-7_in);
-  turn->turnAngle(-98_deg);
-  flyStop();
-  skills->moveDistance(-65_in);
-  //align with 3rd roller and score it
-  turn->turnAngle(-45_deg);
-  rollerV(-200);
-  skills->moveDistance(-15_in);
-  rollerStop();
-  skills->moveDistance(3_in);
-  //-------------------------
+  pcDrive->moveDistance(50_in);
+  // -- Shoot#5 (3 discs)
+  //=========================================================
+  turnPID(-35, 1.5);
+  shoot();
+  pros::delay(3000);
+  flySpinToV(390);
+  // -- Stack(Intake)#2 (repeat #1)
+  //=========================================================
+  turnPID(47, 1.5);
   intakeV(600);
-  rollerV(-200);
-  turn->turnAngle(-40_deg);
-  skills->moveDistance(22_in);
-  turn->turnAngle(125_deg);
-  rollerV(-200);  //Score Roller 4
-  skills->moveDistance(-13_in);
-  pros::delay(0);
-  rollerStop();
-  //Approach expanding location
-  skills->moveDistance(20_in);
-  turn->turnAngle(-48_deg);
-  //expand
+  pcDrive->setMaxVelocity(300);
+  pcDrive->moveDistance(20_in);
+  pcDrive->setMaxVelocity(160);
+  pcDrive->moveDistance(25_in);
+  // -- Shoot#6
+  //=========================================================
+  turnPID(-78, 1.5);
+  shootSlow();
+  pros::delay(3000);
+  // -- Expand
+  //=========================================================
+  pcDrive->moveDistance(-18_in);
+  turnPID(50, 1.5);
   normalExpansion();
 
-  ////END-OF-ROUTINE////
-  //__________________//
-  //Expected Results: //
-  // --4x Rollers     //
-  // -- 6x High Discs  //
-  // -- ~26 tiles     //
-  //__________________//
-  // TOTAL: ~100pts   //
-  //////////////////////
+  
+  /////END-OF-ROUTINE/////
+  //____________________//
+  //Expected Results:   //
+  // --4x Rollers       //
+  // --16x High Discs   //
+  // -- ~26-28 tiles    //
+  //____________________//
+  // TOTAL: ~195pts     //
+  ////////////////////////
 }
 
 /*-------------------------------------------------------------------------*/
@@ -312,23 +310,23 @@ void  progSkillsPID(){
   //-------------------------
   intakeV(600);
   rollerV(-200);
-  turnPID(-40);
+ // turnPID(-40);
   skills->moveDistance(20_in);
-  turnPID(88);
+  //turnPID(88);
   rollerV(-200);  //Score Roller 2
   skills->moveDistance(-11.5_in);
   pros::delay(0);
   rollerStop();
   //------------------------
   skills->moveDistance(8_in);
-  turnPID(0);
+ // turnPID(0);
   flySpinToV(360); //normal shooting
   skills->moveDistance(32_in);
   turn->turnAngle(13_deg);//use no PID for small turns
   intakeV(-600);//prevent Jamming
   shoot();  //Score 2 discs( 1 preload + 1 intaked)
   pros::delay(4000);
-  turnPID(90);
+  //turnPID(90);
   flyStop();
   //------------------------
   //intake 1 disc on path
@@ -336,12 +334,12 @@ void  progSkillsPID(){
   rollerV(-200);
   skills->moveDistance(20_in);
   //Align with discs
-  turnPID(45);
+ // turnPID(45);
   //Intake 2 discs
   skills->moveDistance(35_in);
   flySpinToV(372);//Shot #2
   // Align with blue goal
-  turnPID(-39);
+ // turnPID(-39);
   intakeV(-600);//prevent jamming
   pros::delay(500);
   intakeV(-600);//prevent Jamming
@@ -350,12 +348,12 @@ void  progSkillsPID(){
   //--------------------------
   //Approach 2nd roller pair
   skills->moveDistance(-7_in);
-  turnPID(-126);
+ // turnPID(-126);
   flyStop();
   intakeStop();
   skills->moveDistance(-65_in);
   //align with 3rd roller and score it
-  turnPID(-180);
+  //turnPID(-180);
   rollerV(-200); //Score Roller 3
   skills->moveDistance(-13_in);
   rollerStop();

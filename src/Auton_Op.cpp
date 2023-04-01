@@ -14,17 +14,21 @@
 void runAuton(){
    //lower angle
    angleDown();
+   //set drive to Brake
+   setDriveBrake();
    //turn on optical sensor led
    //def::optical.set_led_pwm(60);
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
   //     pathFollowing();
-     rollerAuton();
+    // rollerAuton();
   //   nonRollerAuton();
   //   fullWpAuton();
-       //progSkills();
-     //  turnPID(90);
+       progSkills();
+      //setDriveBrake();
+      // turnPID(90);
+      // intakeV(600);
       // turnInertial(90, false);
      //  progSkillsShort();
   //   progSkillsPID();
@@ -79,9 +83,9 @@ if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {
   flySpinToV(360);//350 (hard shooting)
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
- // angleDown();
-  //flySpinToV(600);
-  fwPID(400);
+  angleDown();
+  flySpinToV(600);
+  //fwPID(400);
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
   angleDown();
@@ -90,7 +94,7 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 else{
   angleUp();
 // angleDown();
- // flySpinToV(325);//mantain momentum (normal shooting) 320
+  flySpinToV(325);//mantain momentum (normal shooting) 320
   pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 

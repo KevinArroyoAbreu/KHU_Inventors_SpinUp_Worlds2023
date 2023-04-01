@@ -29,6 +29,6 @@ void rotate( int degrees, int speed);
     extern int totalError;
     extern int turnDifference;
 
-    void turnPID(double DesireValue);
+    void turnPID(double desireValueRaw, int timer);
     void turnInertial(double DesireValue, bool direction);
     void rSideTurn(int degrees, bool direction);

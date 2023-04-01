@@ -49,12 +49,14 @@ Drivetrain turns with PID and inertial sensor*/
     int turnDifference;
 
 
-    void turnPID(double desireValue){//degrees
+    void turnPID(double desireValueRaw, int timer){//degrees
+  
       bool turning = true;
-
+      double desireValue = desireValueRaw - 5;
+      int time = 0;
       while(turning){
-
-        double  heading;
+        
+        double heading;
 
         if(180 >= def::inertial.get_heading() & def::inertial.get_heading() >= 0){
           heading = def::inertial.get_heading();
@@ -81,7 +83,7 @@ Drivetrain turns with PID and inertial sensor*/
         double power = error * turnkP + derivative * turnkD + totalError * turnkI;
        // double power = turnkP * error + ( turnkI * integral(error*derivative*t) ) + turnkD( (derivative*error) / derivative*t) ;
         //int outputSpeed = 3*pow(power, 3);// = 3*[power^3]
-        int outputSpeed = pow(power, 2);// = 2*[power^2]
+        int outputSpeed = 3*pow(power, 1);// = 2*[power^2]
 
         if(heading > desireValue ){ // for left turns
           turnLeft(outputSpeed);//2*pwr --> pwr^2 will give more agressiveness
@@ -92,9 +94,11 @@ Drivetrain turns with PID and inertial sensor*/
 
 
         pros::screen::print(TEXT_MEDIUM, 5, "Power: %f", power);
-        if(power <= 0.5){
+        if(power <= 0.5 ||  time == timer*50){
           turning = false;
         }
+
+        time ++;
         pros::delay(20);
       }
       driveStop();
