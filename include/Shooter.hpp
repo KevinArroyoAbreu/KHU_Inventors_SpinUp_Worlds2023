@@ -14,3 +14,5 @@
 void flyGetVelocity();
 void flySpinToV(int velocity);
 void flyStop();
+
+void fwPID(double targetV);
