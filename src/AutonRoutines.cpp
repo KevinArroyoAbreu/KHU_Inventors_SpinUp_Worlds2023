@@ -181,7 +181,7 @@ void  progSkills(){
   //=========================================================
   rollerV(200);
   pcDrive->setMaxVelocity(220);
-  pcDrive->moveDistance(-4_in);
+  pcDrive->moveDistance(-5.5_in);
   turnPID(-170, 2);
   driveToRoller();
   pros::delay(400);
@@ -192,7 +192,7 @@ void  progSkills(){
   rSideTurn(70, false);
   pros::delay(200);
   pcDrive->moveDistance(13_in);
-  pcDrive->turnAngle(105_deg);
+  pcDrive->turnAngle(98_deg);
   rollerV(200);
   pcDrive->setMaxVelocity(200);
   driveToRoller();
