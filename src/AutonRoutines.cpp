@@ -133,12 +133,12 @@ void  progSkills(){
   //=========================================================
   rSideTurn(70, false);
   pros::delay(200);
-  pcDrive->moveDistance(13_in);
+  pcDrive->moveDistance(14_in);
   //pcDrive->turnToAngle(76_deg);
   turnPID(90, 1.5);//1.5 second timer
   rollerV(200);
   pcDrive->setMaxVelocity(200);
-  pcDrive->moveDistance(-12.8_in);//-13
+  pcDrive->moveDistance(-12.6_in);//-13
   opticalRoller();
   pcDrive->moveDistance(8_in);
   intakeV(600);
@@ -149,10 +149,11 @@ void  progSkills(){
   pcDrive->moveDistance(26_in);
   shootSlow();
   pros::delay(3000);
+  flySpinToV(375);
   //-- Intake #2
   //=========================================================
   pcDrive->moveDistance(-14_in);
-  turnPID(53, 1.5);
+  turnPID(54, 1.5);
   intakeV(600);
   pcDrive->moveDistance(50_in);
   // -- Shoot#2
@@ -160,10 +161,10 @@ void  progSkills(){
   turnPID(-35, 1.5);
   shoot();
   pros::delay(3000);
-  flySpinToV(390);
+  flySpinToV(380);
   // -- Stack(Intake)#1
   //=========================================================
-  turnPID(48, 1.5);
+  turnPID(51, 1.5);
   intakeV(600);
   pcDrive->setMaxVelocity(300);
   pcDrive->moveDistance(20_in);
@@ -171,69 +172,61 @@ void  progSkills(){
   pcDrive->moveDistance(25_in);
   // -- Shoot#3
   //=========================================================
-  turnPID(-78, 1.5);
+  turnPID(-80, 1.5);
+  pros::delay(600);
   shootSlow();
   pros::delay(3000);
   //--REPEAT on other side(Mirrored field)
   // -- Roller#3
   //=========================================================
+  rollerV(200);
   pcDrive->setMaxVelocity(220);
-  pcDrive->moveDistance(-8.4_in);
+  pcDrive->moveDistance(-4_in);
   turnPID(-170, 2);
-  pcDrive->moveDistance(-8_in);
+  driveToRoller();
+  pros::delay(400);
   opticalRoller();//Score Roller 3
+  pros::delay(300);
   //-- Intake 1 disc / turn 4th Roller
   //=========================================================
   rSideTurn(70, false);
   pros::delay(200);
   pcDrive->moveDistance(13_in);
-  //pcDrive->turnToAngle(76_deg);
-  turnPID(-90, 1.5);//1.5 second timer
+  pcDrive->turnAngle(105_deg);
   rollerV(200);
   pcDrive->setMaxVelocity(200);
-  pcDrive->moveDistance(-13_in);
+  driveToRoller();
   opticalRoller();
   pcDrive->moveDistance(8_in);
   intakeV(600);
   //-- Shot #4 (1 disc)
   //=========================================================
-  turnPID(10, 1.5);
+  turnPID(-170, 1.5);
   pcDrive->setMaxVelocity(220);
   pcDrive->moveDistance(26_in);
   shootSlow();
   pros::delay(1500);
   //-- Intake #2 repeat
   //=========================================================
-  pcDrive->moveDistance(-14_in);
-  turnPID(55, 1.5);
+  pcDrive->moveDistance(-17_in);
+  turnPID(-123, 1.5);
   intakeV(600);
   pcDrive->moveDistance(50_in);
   // -- Shoot#5 (3 discs)
   //=========================================================
-  turnPID(-35, 1.5);
+  pcDrive->turnAngle(-78_deg);
   shoot();
-  pros::delay(3000);
-  flySpinToV(390);
-  // -- Stack(Intake)#2 (repeat #1)
-  //=========================================================
-  turnPID(47, 1.5);
-  intakeV(600);
-  pcDrive->setMaxVelocity(300);
-  pcDrive->moveDistance(20_in);
-  pcDrive->setMaxVelocity(160);
-  pcDrive->moveDistance(25_in);
-  // -- Shoot#6
-  //=========================================================
-  turnPID(-78, 1.5);
-  shootSlow();
   pros::delay(3000);
   // -- Expand
   //=========================================================
-  pcDrive->moveDistance(-18_in);
-  turnPID(50, 1.5);
+  turnPID(68, 1.5);
+  pcDrive->setMaxVelocity(350);
+  pcDrive->moveDistance(-58_in);
+  pcDrive->turnAngle(-13_deg);  
   normalExpansion();
-
-  
+  intakeStop();
+  rollerStop();
+  flyStop();
   /////END-OF-ROUTINE/////
   //____________________//
   //Expected Results:   //

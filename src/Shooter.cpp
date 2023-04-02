@@ -27,7 +27,7 @@ void fwPID(double targetV){
 
     double kP = 0.2;//0.1
     double kI = 0.01;//0.01
-    double errorIntegral = 0.5;
+    double errorIntegral = 0;
     
     while(true){
         double velocity = def::Flywheel.getActualVelocity();//0-600rpm

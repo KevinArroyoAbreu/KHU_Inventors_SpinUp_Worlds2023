@@ -35,3 +35,5 @@ void setDriveBrake();
 void leftDriveBrake();
 //turn function
 void turnAngle(int deg);
+//drive bckwd until roller reached (Ultrasonic sensor)
+void driveToRoller();

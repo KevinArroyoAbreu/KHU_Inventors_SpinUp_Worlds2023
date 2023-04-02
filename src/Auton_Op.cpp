@@ -34,11 +34,7 @@ void runAuton(){
   //   progSkillsPID();
   // printf("Hue value: %lf \n", def::optical.get_hue());
 
-//  while(1)
-//  { 
-//    pros::screen::print(TEXT_LARGE, 3, "Inertial: %f", def::inertial.get_heading());
-//    pros::delay(20);
-//  }
+ 
 }
 
 
@@ -50,7 +46,8 @@ void runOp(){
   pros::screen::erase();
 
 while(true){
-  //pros::screen::print(TEXT_LARGE, 3, "Flywheel: %f", def::Flywheel.getActualVelocity());
+  //pros::screen::print(TEXT_LARGE, 3, "rearUltrasonic: %d", def::rearUltrasonic.get_value());
+  pros::screen::print(TEXT_LARGE, 3, "Flywheel: %f", def::Flywheel.getActualVelocity());
 /*------------------------------------------*/
     //Drivetrain movement; Operator Control:
 /*------------------------------------------*/
@@ -95,7 +92,7 @@ else{
   angleUp();
 // angleDown();
   flySpinToV(325);//mantain momentum (normal shooting) 320
-  pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
+  //pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 
 /*------------------------------------------*/

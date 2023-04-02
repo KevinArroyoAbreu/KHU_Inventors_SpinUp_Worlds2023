@@ -101,9 +101,14 @@ void rollerV(int velocity){
 void opticalRoller(){
   //turn on optical sensor led
   def::optical.set_led_pwm(60);
+  int i = 0;
   while(def::optical.get_hue() < 100 || def::optical.get_hue() > 290 ){
     rollerV(200);
+    if(i == 100){
+      break;
+    }
     pros::delay(15);
+    i++;
   }
   pros::delay(0);
   rollerStop();

@@ -121,17 +121,23 @@ void leftDriveBrake(){
   pros::c::motor_set_brake_mode(11, MOTOR_BRAKE_HOLD);
   pros::c::motor_set_brake_mode(12, MOTOR_BRAKE_HOLD);
 }
-//turn function
-/*void turnAngle(int deg){
-  int v = 200; // rpm velocity of turns
 
-  float distance = 264*(3.14159)*(deg/360);
-  float revs = 1.67*(distance/69.85);
-  int ticks = 300*(revs);
+//drive bckwd until roller reached (Ultrasonic sensor)
+ void driveToRoller(){
+  int speed = -60;//rpm bckwds
 
-  pros::c::motor_move_relative(11, ticks, v);
-  pros::c::motor_move_relative(12, -ticks, v);
-  pros::c::motor_move_relative(13, ticks, v);
-  pros::c::motor_move_relative(14, -ticks, v);
+  double target = 133;
 
-}*/
+  while(def::rearUltrasonic.get_value() >= target){
+     //LEFT
+    pros::c::motor_move(11,  speed);
+    pros::c::motor_move(12, -speed);
+     //RIGHT
+    pros::c::motor_move(13, -speed);
+    pros::c::motor_move(14,  speed);
+    pros::screen::print(TEXT_LARGE, 3, "rearUltrasonic: %d", def::rearUltrasonic.get_value());
+    pros::delay(20);
+  }
+  driveStop();
+
+   }
