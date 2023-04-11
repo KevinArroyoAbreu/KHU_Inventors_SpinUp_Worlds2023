@@ -119,7 +119,7 @@ void fullWpAuton(){
 }
 
 /*-------------------------------------------------------------------------*/
-//#4: progSkills --> Programming Skills Routine (USE ONLY 1 PRELOAD!!!!!) to prevent jamming
+//#4: progSkills --> Programming Skills Routine 
 /*-------------------------------------------------------------------------*/
 void  progSkills(){
     //-- Score Roller 1 (2.5 to the right)
