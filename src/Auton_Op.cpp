@@ -77,7 +77,7 @@ int turnMovementFunct = turnJoystick;
 /*------------------------------------------*/
 if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {//-------------FAR
   angleUp();
-  flySpinToV(390);//350 (hard shooting)
+  flySpinToV(370);//350 (hard shooting)
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
   angleDown();
@@ -91,7 +91,7 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 else{//-----------------------------------------------------------------------------CLOSE
   angleUp();
 // angleDown();
-  flySpinToV(370);//mantain momentum (normal shooting) 325
+  flySpinToV(330);//mantain momentum (normal shooting) 325
   //pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 
