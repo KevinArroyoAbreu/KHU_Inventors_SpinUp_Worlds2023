@@ -121,6 +121,10 @@ void leftDriveBrake(){
   pros::c::motor_set_brake_mode(11, MOTOR_BRAKE_HOLD);
   pros::c::motor_set_brake_mode(12, MOTOR_BRAKE_HOLD);
 }
+void rightDriveBrake(){
+  pros::c::motor_set_brake_mode(13, MOTOR_BRAKE_HOLD);
+  pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_HOLD);
+}
 
 //drive bckwd until roller reached (Ultrasonic sensor)
  void driveToRoller(){

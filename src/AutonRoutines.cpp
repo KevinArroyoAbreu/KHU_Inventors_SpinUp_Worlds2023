@@ -48,24 +48,30 @@ void rollerAuton(){
  rSideTurn(70, false);
  //pcDrive->moveDistance(2_in);
  pros::delay(100);
- rSideTurn(50, true);//to the right
- pros::delay(1500);//1500
- shootatV(400, 405);//avg. for shooting at correct velocity
+ rSideTurn(53, true);//to the right (45)
+ pros::delay(500);
+ intakeV(0);
+ rollerV(200);
+ //pros::delay(800);//1500
+ shootatV(400, 401);//avg. for shooting at correct velocity
  pcDrive->moveDistance(-2.5_in);
  scoreRollerAuton();
  pcDrive->moveDistance(3_in);
  //continue routine
-  flySpinToV(410);//prepare second rpm FW
+  flySpinToV(400);//prepare second rpm FW
   intakeV(600);
-  pcDrive->turnAngle(41_deg);//Right
+  pcDrive->turnAngle(43_deg);//Right (41)
   pcDrive->setMaxVelocity(300);//200
   pcDrive->moveDistance(22_in);//36
-  pros::delay(200);
-  pcDrive->setMaxVelocity(200);
+  pros::delay(100);
+  pcDrive->setMaxVelocity(160);
   pcDrive->moveDistance(20_in);
-  pcDrive->turnAngle(-72_deg);
+  pros::delay(500);
+  intakeV(0);
+  rollerV(200);
+  pcDrive->turnAngle(-70_deg);
   //7)Shoot
-  shoot();
+  shootSlow();
   pros::delay(2000);
   rollerStop();
   flyStop();
@@ -77,24 +83,38 @@ void rollerAuton(){
 /*-------------------------------------------------------------------------*/
 void nonRollerAuton(){
   //Intake 1 disc and align with goal
- flySpinToV(433);
+ flySpinToV(394);
  intakeV(600);
- rollerV(-200);
- drive->moveDistance(32_in);
-/// turnPID(41);
- drive->moveDistance(6_in);
- intakeV(-600);
- shoot();
- rollerV(150);
- pros::delay(4000);
- flyStop();
+ drive->moveDistance(20_in);
+ pcDrive->turnAngle(22_deg);
+ pros::delay(600);
+ shootSlow();
+ pros::delay(1500);
  rollerStop();
- //turnPID(-43);
- drive->moveDistance(-52_in);
-// turnPID(0.2);
- drive->moveDistance(-9_in);
- scoreRollerAuton();
- drive->moveDistance(2_in);
+ flySpinToV(401);
+ //pcDrive->turnAngle(15_deg);
+ intakeV(600);
+ //-//pcDrive->setMaxVelocity(160);
+ //-//pcDrive->moveDistance(6_in);
+ //-//pcDrive->moveDistance(-8_in);
+ //--
+ pcDrive->turnAngle(-62_deg);
+ pcDrive->moveDistance(23_in);
+ pcDrive->turnAngle(69_deg);
+ pros::delay(300);
+ //--
+ //--//lSideTurn(20, false);
+ shootSlow();
+ pros::delay(1500);//500
+ pcDrive->turnAngle(-76_deg);//-62//70
+ pcDrive->setMaxVelocity(380);
+ pcDrive->moveDistance(-54_in);//-32
+ rollerV(-200);
+ //rSideTurn(70, true);//70
+ //driveToRoller();
+ pros::delay(200);
+ rollerStop();
+ flyStop();
  intakeStop();
 }
 
@@ -102,19 +122,48 @@ void nonRollerAuton(){
 //#3: fullWPAuton ->
 /*-------------------------------------------------------------------------*/
 void fullWpAuton(){
-  //Score Roller 1
-  drive->moveDistance(-1_in);
-  scoreRollerAuton();
-  drive->moveDistance(4_in);
-  //Approach shooting distance
-  turn->turnAngle(-145_deg);
-  flySpinToV(450);
-  drive->moveDistance(-140_in);
-  //Turn towards roller 2 and turn it
-  turn->turnAngle(50.5_deg);
-  drive->moveDistance(-6_in);
-  scoreRollerAuton();
-  drive->moveDistance(2_in);
+  //turn on flywheel
+  flySpinToV(406);
+  //turn roller (on roller side)
+  rollerV(-100);
+  pcDrive->moveDistance(-1.2_in);//front, side (relative to beginning) // true == bckwd
+  intakeV(600);//turn on intake
+  pcDrive->moveDistance(3_in);
+  //intake 3 disc stack
+  intakeV(600);
+  pcDrive->turnAngle(38_deg);//Right (41)
+  //turnPID(45, 1.5);
+  pcDrive->setMaxVelocity(400);//200
+  pcDrive->moveDistance(42_in);//22
+ // pros::delay(100);
+// pcDrive->setMaxVelocity(160);
+  //pcDrive->moveDistance(20_in);
+  pros::delay(500);
+  intakeV(0);
+  rollerV(200);
+  pcDrive->turnAngle(-68_deg);//-76
+  //shoot 3 discs
+  shootSlow();
+  pros::delay(1500);
+  flySpinToV(410);//new rpm FW
+  //intake 3 disc row
+  pcDrive->turnAngle(63_deg);//69
+  intakeV(600);
+  pcDrive->setMaxVelocity(400);
+  pcDrive->moveDistance(68_in);
+  //turn roller
+  pcDrive->turnAngle(-124_deg);
+  rollerV(-100);
+  driveToRoller();
+  pros::delay(200);
+  rollerStop();
+  //shoot 3 discs
+  //lSideTurn(25, true);
+  //shootSlow();
+  //pros::delay(2000);
+  rollerStop();
+  flyStop();
+  intakeStop();
 
 }
 

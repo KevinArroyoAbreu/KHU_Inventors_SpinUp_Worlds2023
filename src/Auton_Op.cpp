@@ -22,8 +22,8 @@ void runAuton(){
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
   //     pathFollowing();
-     rollerAuton();
-  //   nonRollerAuton();
+  //   rollerAuton();
+     nonRollerAuton();
   //   fullWpAuton();
       // progSkills();
       //setDriveBrake();

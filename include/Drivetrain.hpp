@@ -33,6 +33,7 @@ extern std::shared_ptr<ChassisController> drive;
 void setDriveCoast();
 void setDriveBrake();
 void leftDriveBrake();
+void rightDriveBrake();
 //turn function
 void turnAngle(int deg);
 //drive bckwd until roller reached (Ultrasonic sensor)

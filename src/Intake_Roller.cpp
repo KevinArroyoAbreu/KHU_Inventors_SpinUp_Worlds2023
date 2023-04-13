@@ -25,9 +25,12 @@ while(1){
   int time = 0;
   if(def::Flywheel.getActualVelocity() >= minV && def::Flywheel.getActualVelocity() <= maxV){
   pros::delay(0);  
-  shoot1by1(1);
+  shoot();//----------|
+  pros::screen::print(TEXT_LARGE, 4, "shootatV: %f", def::Flywheel.getActualVelocity());
+  pros::delay(500);//-| shoot 1
+  rollerStop();
   i ++;
-  pros::screen::print(TEXT_LARGE, 4, "shootatV i: %f", i);
+  pros::delay(300);//regain some rpm
   }
   else {
     rollerStop();

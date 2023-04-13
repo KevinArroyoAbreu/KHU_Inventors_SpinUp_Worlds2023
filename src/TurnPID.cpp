@@ -159,7 +159,7 @@ void turnInertial(double desireValue, bool direction = false){//degrees
       leftDriveBrake();//hold
       double distanceToMove = 5*(3.14*degrees/180);
       double ticksToMove = (300*1.6*distanceToMove) / 8.2958; //1 rev = 1.625 / 1 rev = 300(1.6) ticks (3.25in wheels)
-
+      printf("ticks: %f", ticksToMove);
     def::driveFR.tarePosition();
     def::driveRR.tarePosition();
 
@@ -171,6 +171,7 @@ void turnInertial(double desireValue, bool direction = false){//degrees
    }  
    else if(direction == true){//right
     while( def::driveRR.getPosition() >= -ticksToMove){
+    printf("ticks: %f", def::driveRR.getPosition());
      def::driveFR.moveVelocity(180);
      def::driveRR.moveVelocity(-180);
     }
@@ -180,5 +181,34 @@ void turnInertial(double desireValue, bool direction = false){//degrees
       pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_HOLD);
       def::driveFR.moveVelocity(0);
       def::driveRR.moveVelocity(0);
+      
+    }
+
+void lSideTurn(int degrees, bool direction){
+      rightDriveBrake();//hold
+      double distanceToMove = 5*(3.14*degrees/180);
+      double ticksToMove = (300*1.6*distanceToMove) / 8.2958; //1 rev = 1.625 / 1 rev = 300(1.6) ticks (3.25in wheels)
+      printf("ticks: %f", ticksToMove);
+    def::driveFL.tarePosition();
+    def::driveRL.tarePosition();
+
+  if(direction == false){//left
+   while( def::driveFL.getPosition() >= -ticksToMove){
+     def::driveFL.moveVelocity(-180);
+     def::driveRL.moveVelocity(180);
+    }
+   }  
+   else if(direction == true){//right
+    while( def::driveFL.getPosition() <= ticksToMove){
+    printf("position: %f", def::driveFL.getPosition());
+     def::driveFL.moveVelocity(180);
+     def::driveRL.moveVelocity(-180);
+    }
+   }
+   
+      pros::c::motor_set_brake_mode(13, MOTOR_BRAKE_HOLD);
+      pros::c::motor_set_brake_mode(14, MOTOR_BRAKE_HOLD);
+      def::driveFL.moveVelocity(0);
+      def::driveRL.moveVelocity(0);
       
     }
