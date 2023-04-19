@@ -53,7 +53,7 @@ void rollerAuton(){
  intakeV(0);
  rollerV(200);
  //pros::delay(800);//1500
- shootatV(400, 401);//avg. for shooting at correct velocity
+ shootatV(399, 402);//avg. for shooting at correct velocity
  pcDrive->moveDistance(-2.5_in);
  scoreRollerAuton();
  pcDrive->moveDistance(3_in);

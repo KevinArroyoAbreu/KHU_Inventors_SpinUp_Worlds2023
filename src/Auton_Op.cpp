@@ -22,9 +22,9 @@ void runAuton(){
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
   //     pathFollowing();
-  //   rollerAuton();
-     nonRollerAuton();
-  //   fullWpAuton();
+     rollerAuton();
+   //  nonRollerAuton();
+   //  fullWpAuton();
       // progSkills();
       //setDriveBrake();
       // turnPID(90);
@@ -76,8 +76,8 @@ int turnMovementFunct = turnJoystick;
 //Shooter; Operator Control:
 /*------------------------------------------*/
 if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {//-------------FAR
-  angleUp();
-  flySpinToV(370);//350 (hard shooting)
+  higherAngle();
+  flySpinToV(350);//350 (370) (hard shooting)
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
   angleDown();
@@ -86,12 +86,12 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
   angleDown();
-  flySpinToV(370);// shoot from little farther than usual 355
+  flySpinToV(380);// shoot from little farther than usual 355 (370)
 }
 else{//-----------------------------------------------------------------------------CLOSE
   angleUp();
 // angleDown();
-  flySpinToV(330);//mantain momentum (normal shooting) 325
+  flySpinToV(360);//mantain momentum (normal shooting) 330 (340) / 370
   //pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 

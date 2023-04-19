@@ -20,6 +20,7 @@ void shoot1(int delay);
 void shoot1by1(int discQuantity);
 void angleDown();
 void angleUp();
+void higherAngle();
 void scoreRollerAuton();
 void rollerStop();
 void rollerV(int velocity);

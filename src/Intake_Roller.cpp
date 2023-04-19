@@ -85,10 +85,16 @@ void shoot1by1(int discQuantity){
 
 }
 void angleDown(){
+ def::higherAngle.set_value(false);
  def::angleChanger.set_value(false);
 }
 void angleUp(){
+ def::higherAngle.set_value(false);
  def::angleChanger.set_value(true);
+}
+void higherAngle(){
+ def::angleChanger.set_value(true); 
+ def::higherAngle.set_value(true);
 }
 void scoreRollerAuton(){
  rollerV(-200);
