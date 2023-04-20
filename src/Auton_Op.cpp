@@ -91,7 +91,7 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 else{//-----------------------------------------------------------------------------CLOSE
   angleUp();
 // angleDown();
-  flySpinToV(360);//mantain momentum (normal shooting) 330 (340) / 370
+  flySpinToV(345);//mantain momentum (normal shooting) 330 (340) / 370
   //pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 
