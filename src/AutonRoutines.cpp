@@ -39,28 +39,27 @@ void pathFollowing(){
 //#1: rollerAuton ->
 /*-------------------------------------------------------------------------*/
 void rollerAuton(){
-  flySpinToV(400);
+  flySpinToV(425);//400//420
  // pros::delay(3000);
  // shootatV(420, 425);
  // pros::delay(20000);
  //--------------------------
  intakeV(600);
- rSideTurn(70, false);
+ rSideTurn(100, false);//60
  //pcDrive->moveDistance(2_in);
  pros::delay(100);
- rSideTurn(53, true);//to the right (45)
- pros::delay(500);
- intakeV(0);
- rollerV(200);
+ rSideTurn(74, true);//to the right (45)//53/78//72
+ pros::delay(100);//500
+ shootatV(422, 427);
  //pros::delay(800);//1500
- shootatV(399, 402);//avg. for shooting at correct velocity
+ //shootatV(399, 410);//avg. for shooting at correct velocity//399,402
  pcDrive->moveDistance(-2.5_in);
  scoreRollerAuton();
  pcDrive->moveDistance(3_in);
  //continue routine
-  flySpinToV(400);//prepare second rpm FW
+  flySpinToV(430);//prepare second rpm FW
   intakeV(600);
-  pcDrive->turnAngle(43_deg);//Right (41)
+  pcDrive->turnAngle(43_deg);//Right (43)
   pcDrive->setMaxVelocity(300);//200
   pcDrive->moveDistance(22_in);//36
   pros::delay(100);
@@ -69,10 +68,10 @@ void rollerAuton(){
   pros::delay(500);
   intakeV(0);
   rollerV(200);
-  pcDrive->turnAngle(-70_deg);
+  pcDrive->turnAngle(-76_deg);//70
   //7)Shoot
   shootSlow();
-  pros::delay(2000);
+  pros::delay(2500);
   rollerStop();
   flyStop();
   intakeStop();
@@ -118,6 +117,49 @@ void nonRollerAuton(){
  intakeStop();
 }
 
+
+//extra nonRoller
+void nonRollerExtraAuton(){
+  //Intake 1 disc and align with goal
+ flySpinToV(422);//420
+ rollerV(-200);
+ pcDrive->moveDistance(-10_in);
+ rSideTurn(100, true);
+ rollerStop();
+ rSideTurn(20, false);
+ //turnPID(55, 1.5);
+ //pcDrive->turnAngle(15_deg);
+ intakeV(600);
+ //-//pcDrive->setMaxVelocity(160);
+ //-//pcDrive->moveDistance(6_in);
+ //-//pcDrive->moveDistance(-8_in);
+ //--
+ pcDrive->moveDistance(23_in);
+ pcDrive->turnAngle(56_deg); //60
+ pros::delay(300);
+ //--
+ //--//lSideTurn(20, false);
+ shootSlow();
+ pros::delay(1500);//500
+ //intake 1 (auton line)
+ intakeV(600);
+ flySpinToV(404);//410
+ pcDrive->moveDistance(6_in);
+ pcDrive->moveDistance(-6_in);
+ //intake 2 more and shoot
+ pcDrive->turnAngle(-50_deg);//-62//70//(54)
+ pcDrive->setMaxVelocity(300);
+ pcDrive->moveDistance(30_in);//-32
+ //accomodate and shoot
+ pcDrive->turnAngle(72.6_deg);//78/74
+ shootSlow();
+ pros::delay(1800);
+ rollerStop();
+ flyStop();
+ intakeStop();
+}
+
+
 /*-------------------------------------------------------------------------*/
 //#3: fullWPAuton ->
 /*-------------------------------------------------------------------------*/
@@ -131,26 +173,28 @@ void fullWpAuton(){
   pcDrive->moveDistance(3_in);
   //intake 3 disc stack
   intakeV(600);
-  pcDrive->turnAngle(38_deg);//Right (41)
+  pcDrive->turnAngle(41_deg);//Right (41)//38
   //turnPID(45, 1.5);
   pcDrive->setMaxVelocity(400);//200
-  pcDrive->moveDistance(42_in);//22
- // pros::delay(100);
+  pcDrive->moveDistance(48_in);//42
+   // pros::delay(100);
 // pcDrive->setMaxVelocity(160);
   //pcDrive->moveDistance(20_in);
   pros::delay(500);
   intakeV(0);
   rollerV(200);
-  pcDrive->turnAngle(-68_deg);//-76
+  //turnPID(-25, 1.5);//30
+  pcDrive->turnAngle(-78_deg);//-68
   //shoot 3 discs
   shootSlow();
   pros::delay(1500);
-  flySpinToV(410);//new rpm FW
+  flySpinToV(450);//new rpm FW
   //intake 3 disc row
-  pcDrive->turnAngle(63_deg);//69
+  turnPID(47, 1.5);//50
+  //pcDrive->turnAngle(65_deg);//63
   intakeV(600);
   pcDrive->setMaxVelocity(400);
-  pcDrive->moveDistance(68_in);
+  pcDrive->moveDistance(62_in);//68
   //turn roller
   pcDrive->turnAngle(-124_deg);
   rollerV(-100);
@@ -171,6 +215,7 @@ void fullWpAuton(){
 //#4: progSkills --> Programming Skills Routine 
 /*-------------------------------------------------------------------------*/
 void  progSkills(){
+  angleUp();
     //-- Score Roller 1 (2.5 to the right)
   //=========================================================
   flySpinToV(365);//turn on Flywheel
@@ -246,9 +291,13 @@ void  progSkills(){
   pcDrive->setMaxVelocity(200);
   driveToRoller();
   opticalRoller();
-  pcDrive->moveDistance(8_in);
+  pcDrive->moveDistance(12_in);
   intakeV(600);
-  //-- Shot #4 (1 disc)
+  pcDrive->turnAngle(-45_deg);
+
+  //---------------
+  
+ /* //-- Shot #4 (1 disc)
   //=========================================================
   turnPID(-170, 1.5);
   pcDrive->setMaxVelocity(220);
@@ -271,7 +320,7 @@ void  progSkills(){
   turnPID(68, 1.5);
   pcDrive->setMaxVelocity(350);
   pcDrive->moveDistance(-58_in);
-  pcDrive->turnAngle(-13_deg);  
+  pcDrive->turnAngle(-13_deg);  */
   normalExpansion();
   intakeStop();
   rollerStop();

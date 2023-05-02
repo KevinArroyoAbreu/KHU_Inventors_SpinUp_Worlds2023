@@ -30,7 +30,7 @@ while(1){
   pros::delay(500);//-| shoot 1
   rollerStop();
   i ++;
-  pros::delay(300);//regain some rpm
+  pros::delay(100);//regain some rpm
   }
   else {
     rollerStop();

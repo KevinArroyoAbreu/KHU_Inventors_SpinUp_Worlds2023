@@ -129,7 +129,7 @@ void turnInertial(double desireValue, bool direction = false){//degrees
           error = abs( desireValue - heading );
 
 
-        pros::screen::print(TEXT_MEDIUM, 4, "Error: %f", error);
+        //pros::screen::print(TEXT_MEDIUM, 4, "Error: %f", error);
         
         double power = 0.5*abs(error);
         int outputSpeed = 3*power;//6 
@@ -142,8 +142,8 @@ void turnInertial(double desireValue, bool direction = false){//degrees
         }
 
 
-        pros::screen::print(TEXT_MEDIUM, 5, "Power: %f", power);
-        pros::screen::print(TEXT_MEDIUM, 5, "Output Speed: %f", outputSpeed);
+        //pros::screen::print(TEXT_MEDIUM, 5, "Power: %f", power);
+        //pros::screen::print(TEXT_MEDIUM, 5, "Output Speed: %f", outputSpeed);
 
         if(power <= 0.5){
           turning = false;

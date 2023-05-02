@@ -12,17 +12,18 @@
 
 
 void runAuton(){
-   //lower angle
+ //lower angle
    angleDown();
    //set drive to Brake
    setDriveBrake();
+
    //turn on optical sensor led
    //def::optical.set_led_pwm(60);
   /*------------------------------------------*/
   //SELECTED AUTON ROUTINE:
   /*------------------------------------------*/
   //     pathFollowing();
-     rollerAuton();
+   //  rollerAuton();
    //  nonRollerAuton();
    //  fullWpAuton();
       // progSkills();
@@ -47,7 +48,7 @@ void runOp(){
 
 while(true){
   //pros::screen::print(TEXT_LARGE, 3, "rearUltrasonic: %d", def::rearUltrasonic.get_value());
-  pros::screen::print(TEXT_LARGE, 3, "Flywheel: %f", def::Flywheel.getActualVelocity());
+ // pros::screen::print(TEXT_LARGE, 3, "Flywheel: %f", def::Flywheel.getActualVelocity());
 /*------------------------------------------*/
     //Drivetrain movement; Operator Control:
 /*------------------------------------------*/
@@ -77,7 +78,7 @@ int turnMovementFunct = turnJoystick;
 /*------------------------------------------*/
 if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {//-------------FAR
   higherAngle();
-  flySpinToV(350);//350 (370) (hard shooting)
+  flySpinToV(375);//350 (370) (hard shooting)
 }
 else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) == 1) {
   angleDown();
@@ -91,7 +92,7 @@ else if (def::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 else{//-----------------------------------------------------------------------------CLOSE
   angleUp();
 // angleDown();
-  flySpinToV(345);//mantain momentum (normal shooting) 330 (340) / 370
+  flySpinToV(355);//mantain momentum (normal shooting) 330 (340) / 370
   //pros::screen::print(TEXT_LARGE, 3, "Velocity: %f", def::Flywheel.getActualVelocity());
 }
 

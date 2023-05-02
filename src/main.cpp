@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "autonSelection.h"
 
 
 /**
@@ -13,6 +13,7 @@ void initialize() {
 	def::Flywheel.setGearing(AbstractMotor::gearset::blue);
 	def::inertial.tare_rotation();
 	def::inertial.set_heading(1);
+	selector::init(); 
 }
 
 /**
@@ -48,8 +49,44 @@ void competition_initialize() {
  */
 
 void autonomous() {
-	setDriveBrake();
-	runAuton();
+	//lower angle
+   angleDown();
+   //set drive to Brake
+   setDriveBrake();
+
+/*selector::auton == 1 : Roller
+selector::auton == 2 : extraRoller
+selector::auton == 3 : Skills
+selector::auton == -1 : Non roller
+selector::auton == -2 : extraNon roller
+selector::auton == -3 : N/a
+selector::auton == 0 : Full Wp*/
+
+if(selector::auton == 1){ //Roller
+ rollerAuton();
+}
+if(selector::auton == 2){ //extraRoller
+ 
+}
+if(selector::auton == 3){ //full WP
+fullWpAuton();
+}
+if(selector::auton == -1){ //Non roller
+ nonRollerAuton();
+}
+if(selector::auton == -2){ //extraNon roller
+ nonRollerExtraAuton();
+}
+if(selector::auton == -3){ //N/a Skillshort
+ progSkillsShort();
+}
+if(selector::auton == 0){ //Skills
+ progSkills();
+}
+
+
+	//setDriveBrake();
+	//runAuton();
 }
 
 /**
